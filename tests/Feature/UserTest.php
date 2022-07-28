@@ -25,3 +25,13 @@ test('The name is a string', function(){
 
     expect($user->name)->toBeString();
 });
+
+it('has a name of Chuck NORRIS', function(){
+    $user = User::factory()->create(["name" => "Chuck NORRIS"]);
+    expect($user->name)->toStartWith('Chuck');
+    expect($user->name)->toEndWith('NORRIS');
+    expect($user->name)->toContain('Chuck');
+    expect($user->name)->toContain('NORRIS');
+    expect($user->name)->toContain('Chuck', 'NORRIS');
+    expect($user->name)->toEqual('Chuck NORRIS');
+});
